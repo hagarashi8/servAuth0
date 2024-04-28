@@ -34,7 +34,6 @@ func GetTokensHandler(log *log.Logger, rts *mongo.Collection, secret []byte) htt
 			return
 		}
 		insres, err := rts.InsertOne(context.Background(), tokens.NewFromNow(r.Context(), *rth, guid, rts))
-		log.Println(*rth)
 		if err != nil {
 			log.Println(err.Error())
 			w.WriteHeader(http.StatusInternalServerError)
